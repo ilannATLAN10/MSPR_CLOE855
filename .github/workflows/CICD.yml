@@ -12,7 +12,7 @@ jobs:
           pasword: ${{ secrets.Password }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd $HOME/www/
+            cd $HOME/atlan/
 
   Copy:
     needs: Connexion
@@ -27,7 +27,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             last_directory=$(basename ${{ runner.workspace }})
-            cd $HOME/www/
+            cd $HOME/atlan/
             git clone https://github.com/${{ github.repository }}.git
             # Vérifier si le répertoire de destination existe
             if [ "$(ls -A ./flask)" ]; then
