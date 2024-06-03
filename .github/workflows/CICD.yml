@@ -7,11 +7,11 @@ jobs:
       - name: Connexion SSH avec le serveur
         uses: appleboy/ssh-action@master
         with:
-          host: "ssh-${{ secrets.USERNAME }}atlan.alwaysdata.net"
-          key: ${{ secrets.SSH_KEY }}
+          host: "ssh-${{ secrets.USERNAME }}.alwaysdata.net"
           username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
-            cd $HOME/atlan/
+            cd $HOME/www/
 
   Copy:
     needs: Connexion
@@ -20,12 +20,12 @@ jobs:
       - name: Connexion SSH avec le serveur
         uses: appleboy/ssh-action@master
         with:
-          host: "ssh-${{ secrets.USERNAME }}atlan.alwaysdata.net"
-          key: ${{ secrets.SSH_KEY }}
+          host: "ssh-${{ secrets.USERNAME }}.alwaysdata.net"
           username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
             last_directory=$(basename ${{ runner.workspace }})
-            cd $HOME/atlan/
+            cd $HOME/www/
             git clone https://github.com/${{ github.repository }}.git
             # Vérifier si le répertoire de destination existe
             if [ "$(ls -A ./flask)" ]; then
