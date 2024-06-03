@@ -8,9 +8,9 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: "ssh-${{ secrets.USERNAME }}atlan.alwaysdata.net"
+          key: ${{ secrets.SSH_KEY }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          key: ${{ secrets.SSH_KEY }}
           script: |
             cd $HOME/atlan/
 
@@ -22,9 +22,9 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: "ssh-${{ secrets.USERNAME }}atlan.alwaysdata.net"
+          key: ${{ secrets.SSH_KEY }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          key: ${{ secrets.SSH_KEY }}
           script: |
             last_directory=$(basename ${{ runner.workspace }})
             cd $HOME/atlan/
