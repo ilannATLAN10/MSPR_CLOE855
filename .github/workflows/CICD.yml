@@ -9,7 +9,7 @@ jobs:
         with:
           host: "ssh-${{ secrets.USERNAME }}atlan.alwaysdata.net"
           username: ${{ secrets.USERNAME }}
-          pasword: ${{ secrets.Password }}
+          pasword: ${{ secrets.PASSWORD }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd $HOME/atlan/
@@ -23,7 +23,7 @@ jobs:
         with:
           host: "ssh-${{ secrets.USERNAME }}atlan.alwaysdata.net"
           username: ${{ secrets.USERNAME }}
-          pasword: ${{ secrets.Password }}
+          pasword: ${{ secrets.PASSWORD }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             last_directory=$(basename ${{ runner.workspace }})
