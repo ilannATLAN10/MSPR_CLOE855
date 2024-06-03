@@ -62,6 +62,21 @@ def ReadBDD():
 def formulaire_client():
     return render_template('formulaire.html')  # afficher le formulaire
 
+@app.route('/fiche_nom/<nom>', methods=['GET'])
+def fiche_nom(nom):
+    if not est_authentifie():
+        return redirect(url_for('authentification'))
+    
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM clients WHERE nom = ?", (nom,))
+    data = cursor.fetchall()
+    conn.close()
+    if data:
+        return jsonify(data)
+    else:
+        return jsonify({"error": "Client not found"})
+
 @app.route('/enregistrer_client', methods=['POST'])
 def enregistrer_client():
     nom = request.form['nom']
