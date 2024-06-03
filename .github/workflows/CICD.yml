@@ -9,6 +9,7 @@ jobs:
         with:
           host: "ssh-${{ secrets.USERNAME }}.alwaysdata.net"
           username: ${{ secrets.USERNAME }}
+          pasword: ${{ secrets.Password }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd $HOME/www/
@@ -22,6 +23,7 @@ jobs:
         with:
           host: "ssh-${{ secrets.USERNAME }}.alwaysdata.net"
           username: ${{ secrets.USERNAME }}
+          pasword: ${{ secrets.Password }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             last_directory=$(basename ${{ runner.workspace }})
